@@ -1,4 +1,4 @@
-tis核心配置文件常用标签：
+mybatis核心配置文件常用标签：
 
 1、properties标签：该标签可以加载外部的properties文件
 

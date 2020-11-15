@@ -13,7 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 public class ServiceDemo {
-    public static void main(String[] args)throws Exception {
+    public static void main(String[]  args)throws Exception {
         InputStream resourceAsStream = Resources.getResourceAsStream("sqlMapConfig.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(resourceAsStream);
         SqlSession sqlSession = sqlSessionFactory.openSession();

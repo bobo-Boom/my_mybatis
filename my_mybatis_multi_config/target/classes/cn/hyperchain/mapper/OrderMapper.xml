@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.hyperchain.mapper.OrderMapper">
+
+<!--一对一查询，查询此订单信息以及所属用户信息-->
+    <resultMap id="OrderMap" type="order">
+        <!--
+          手动指定字段与实体属性的关系。
+          column:字段名称
+          property:实体的属性名称
+
+        -->
+        <id column="oid" property="id"></id>
+        <result column="ordertime" property="ordertime"></result>
+        <result column="total" property="total"></result>
+        <!--association的意思是关联匹配的意思-->
+        <association property="user" javaType="user">
+            <id column="uid" property="id"></id>
+            <result column="username" property="username"></result>
+            <result column="password" property="password"></result>
+
+        </association>
+
+    </resultMap>
+
+    <select id="findAll"  resultMap="OrderMap">
+        SELECT *,o.id oid FROM orders o ,USER  u where  o.uid=u.id;
+    </select>
+
+
+</mapper>
